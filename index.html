@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noolukettu Invitation</title>
+<meta name="description" content="Bibin Little and Christamol Johns invite you to their baby boy's Noolukettu ceremony on Saturday, 21 November 2026 at 3:30 pm.">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Marcellus&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: the printed card stands as an arch (sticky on wide screens),
+   and a gold thread runs down the page beside it, tying the sections together. */
+:root {
+  color-scheme: light;
+  --cream: #FFF4E6;
+  --paper: #FFFFFF;
+  --olive: #554D05;
+  --olive-soft: #7B7338;
+  --gold: #B28D3A;
+  --gold-light: #DCC878;
+  --rule: rgba(85, 77, 5, .2);
+  --font-script: "Cormorant Garamond", "Cormorant", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-caps: "Marcellus", "Cinzel", "Trajan Pro", "Times New Roman", serif;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--olive);
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+h1, h2, h3, p { margin: 0; }
+h2, h3 { text-wrap: balance; font-weight: 400; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+/* ---------- page frame ---------- */
+.layout { display: grid; grid-template-columns: minmax(0, 1fr); }
+
+/* ---------- hero: the card ---------- */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 16px 8px;
+}
+#dust { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+.arch {
+  position: relative;
+  container-type: inline-size;
+  width: min(100%, 440px);
+  aspect-ratio: 730 / 1242;
+}
+.arch-shape {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 18px 40px rgba(140, 105, 30, .16));
+}
+.arch-fill { fill: var(--paper); }
+.arch-line {
+  fill: none; stroke: url(#goldline); stroke-width: 3.5;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: draw 2.4s var(--ease) 1.9s forwards;
+}
+.arch-inner {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 6.6cqw 7cqw 4.8cqw;
+  text-align: center;
+}
+
+.cross-wrap { position: relative; height: 12.4cqw; aspect-ratio: 260 / 357; animation: descend 1.6s var(--ease) 2.3s both; }
+.cross-wrap::before {
+  content: ""; position: absolute; inset: -70% -110%;
+  background: radial-gradient(closest-side, rgba(226, 196, 110, .55), rgba(226, 196, 110, 0));
+  animation: glow 5s ease-in-out 4s infinite alternate;
+  opacity: .5;
+}
+.cross-wrap img { position: relative; height: 100%; width: auto; }
+
+.grace, .invite, .address { font-style: italic; font-weight: 500; }
+.grace { margin-top: 3cqw; font-size: 4.5cqw; line-height: 1.2; animation: rise 1.1s var(--ease) 2.75s both; }
+.invite { margin-top: 3.4cqw; font-size: 4.5cqw; line-height: 1.22; animation: rise 1.1s var(--ease) 3s both; }
+
+.title {
+  margin-top: 4.6cqw;
+  font-family: var(--font-caps); font-weight: 400;
+  font-size: 6.5cqw; line-height: 1.62;
+}
+.title .word { display: flex; justify-content: center; gap: .46em; }
+.title .word span {
+  display: block;
+  animation: letter .9s var(--ease) both, gild 8s ease-in-out infinite;
+  animation-delay: calc(3.3s + var(--i) * 55ms), calc(8s + var(--i) * 110ms);
+}
+
+.family {
+  flex: 1 1 0; min-height: 0; width: 66cqw; margin-top: 1.6cqw;
+  animation: unveil 1.9s var(--ease) 4s both;
+}
+.family img {
+  width: 100%; height: 100%; object-fit: contain; object-position: center bottom;
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+}
+
+.date {
+  margin-top: 2.6cqw; font-family: var(--font-caps);
+  display: grid; justify-items: center; gap: 1.1cqw;
+  animation: rise 1s var(--ease) 4.7s both;
+}
+.date .month { font-size: 3.3cqw; letter-spacing: .28em; margin-right: -.28em; }
+.date .row { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; width: 80cqw; }
+.date .row span { font-size: 3cqw; letter-spacing: .3em; margin-right: -.3em; }
+.date .row .day { font-size: 4.9cqw; letter-spacing: 0; margin: 0; padding: .1em 4.6cqw; border-inline: 1px solid #1c1a05; }
+.date .year { font-size: 3.9cqw; }
+.address { margin-top: 3cqw; font-size: 3.8cqw; line-height: 1.28; animation: rise 1s var(--ease) 5s both; }
+
+.scroll-cue {
+  display: grid; justify-items: center; gap: 6px;
+  font-family: var(--font-caps); font-size: .68rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--olive-soft); text-decoration: none;
+  animation: fade 1s ease 5.6s both;
+}
+.scroll-cue i { width: 1px; height: 34px; background: linear-gradient(var(--gold), transparent); transform-origin: top; animation: cue 2.2s ease-in-out infinite; }
+
+/* ---------- story column ---------- */
+.story {
+  position: relative;
+  display: grid; justify-items: center; gap: 12px;
+  padding: 28px 20px 56px;
+  text-align: center;
+}
+.block { width: 100%; max-width: 34rem; display: grid; gap: 18px; justify-items: center; }
+.eyebrow { font-family: var(--font-caps); font-size: .74rem; letter-spacing: .34em; text-transform: uppercase; color: var(--olive-soft); }
+.lead { font-size: clamp(2rem, 7.4vw, 3.2rem); line-height: 1.08; font-style: italic; font-weight: 500; }
+.body { max-width: 30rem; color: #4c4505; }
+
+/* thread connectors */
+.thread { width: 26px; height: 92px; overflow: visible; }
+.thread path, .knot path {
+  fill: none; stroke: var(--gold); stroke-width: 1.4; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+}
+.knot { width: 84px; height: 56px; overflow: visible; }
+
+/* countdown */
+.count { display: grid; grid-template-columns: repeat(4, auto); justify-content: center; }
+.count .cell { display: grid; justify-items: center; gap: 4px; padding: 2px clamp(12px, 4.4vw, 26px); }
+.count .cell + .cell { border-left: 1px solid #1c1a05; }
+.count .num { font-family: var(--font-caps); font-size: clamp(2rem, 9vw, 3.3rem); line-height: 1; min-width: 1.3em; font-variant-numeric: tabular-nums lining-nums; }
+.count .lbl { font-family: var(--font-caps); font-size: .64rem; letter-spacing: .28em; text-transform: uppercase; color: var(--olive-soft); margin-right: -.28em; }
+
+/* when / where */
+.facts { width: 100%; display: grid; gap: 28px; }
+.fact { display: grid; gap: 8px; justify-items: center; }
+.fact h3 { font-family: var(--font-caps); font-size: .74rem; letter-spacing: .34em; text-transform: uppercase; color: var(--olive-soft); }
+.fact .big { font-size: 1.62rem; line-height: 1.2; font-style: italic; font-weight: 500; }
+.fact .small { color: #4c4505; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 46px; padding: 10px 24px; margin-top: 6px;
+  font-family: var(--font-caps); font-size: .74rem; letter-spacing: .24em; text-transform: uppercase; text-decoration: none;
+  color: var(--olive); background: transparent;
+  border: 1px solid var(--gold); border-radius: 999px; cursor: pointer;
+  transition: background .35s ease, color .35s ease, transform .35s var(--ease), box-shadow .35s ease;
+}
+.btn:hover { background: var(--olive); color: var(--cream); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(85, 77, 5, .18); }
+.btn svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.btn.solid { background: var(--olive); color: var(--cream); border-color: var(--olive); width: 100%; }
+.btn.solid:hover { background: #3f3903; }
+
+/* RSVP */
+.rsvp {
+  position: relative; width: 100%; max-width: 36rem;
+  border: 1px solid transparent; border-radius: 140px 140px 14px 14px;
+  background-image: linear-gradient(var(--paper), var(--paper)), linear-gradient(160deg, #a67c2c, var(--gold-light) 45%, #a67c2c);
+  background-origin: border-box; background-clip: padding-box, border-box;
+  box-shadow: 0 24px 60px rgba(140, 105, 30, .14);
+  padding: 62px clamp(18px, 6vw, 48px) 30px;
+  text-align: center;
+}
+.ask, .thanks { display: grid; gap: 22px; }
+.ask[hidden], .thanks[hidden] { display: none; }
+.rsvp-head { display: grid; gap: 8px; justify-items: center; }
+.rsvp h2 { font-size: clamp(2rem, 7vw, 2.8rem); line-height: 1.08; font-style: italic; font-weight: 500; }
+.rsvp .sub { font-style: italic; color: var(--olive-soft); font-size: 1.12rem; }
+
+.choice { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
+.choice label {
+  position: relative; height: 100%;
+  display: grid; justify-items: center; align-content: start; gap: 6px;
+  padding: 20px 8px 16px; background: #fffdf8;
+  border: 1px solid var(--rule); border-radius: 20px; cursor: pointer;
+  transition: transform .45s var(--ease), background .35s ease, border-color .35s ease, box-shadow .45s ease, opacity .35s ease;
+}
+.choice label svg { width: 34px; height: 34px; fill: none; stroke: var(--gold); stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; transition: transform .5s var(--ease); }
+.choice .t { font-style: italic; font-weight: 500; font-size: 1.22rem; line-height: 1.12; }
+.choice .s { font-family: var(--font-caps); font-size: .58rem; letter-spacing: .24em; text-transform: uppercase; color: var(--olive-soft); }
+.choice label::after {
+  content: "\2713"; position: absolute; top: -9px; right: -7px;
+  width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--olive); color: var(--cream); font: 600 .8rem/1 system-ui, sans-serif;
+  transform: scale(0) rotate(-40deg); transition: transform .5s cubic-bezier(.3, 1.6, .5, 1);
+}
+.choice label:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 12px 24px rgba(140, 105, 30, .12); }
+.choice label:hover svg { transform: scale(1.1); }
+.choice input:checked + label { background: var(--cream); border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold), 0 12px 26px rgba(140, 105, 30, .14); transform: translateY(-3px); }
+.choice input:checked + label::after { transform: none; }
+.choice input:checked + label svg { transform: scale(1.12); }
+.choice:has(input:checked) input:not(:checked) + label { opacity: .6; }
+.choice input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .8s var(--ease); }
+.more.open, html:not(.js) .more { grid-template-rows: 1fr; }
+.more-in { min-height: 0; overflow: hidden; display: grid; gap: 16px; margin: 0 -6px; padding: 0 6px; }
+.more-in > * { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.more.open .more-in > *, html:not(.js) .more-in > * { opacity: 1; transform: none; }
+.more.open .more-in > :nth-child(1) { transition-delay: .15s; }
+.more.open .more-in > :nth-child(2) { transition-delay: .25s; }
+.more.open .more-in > :nth-child(3) { transition-delay: .35s; }
+.more.open .more-in > :nth-child(4) { transition-delay: .45s; }
+.more-in > :first-child { margin-top: 4px; }
+.more-in > :last-child { margin-bottom: 6px; }
+
+.ff { position: relative; text-align: left; }
+.ff input, .ff textarea {
+  display: block; width: 100%; font: inherit; font-size: 1.25rem; line-height: 1.3; color: var(--olive);
+  background: #fffdf8; border: 1px solid var(--rule); border-radius: 16px;
+  padding: 25px 16px 9px; transition: border-color .3s ease, box-shadow .3s ease, background .3s ease;
+}
+.ff textarea { resize: none; min-height: 5.4em; }
+.ff label {
+  position: absolute; left: 17px; top: 17px; pointer-events: none;
+  font-style: italic; font-size: 1.2rem; line-height: 1.3; color: var(--olive-soft);
+  transform-origin: left top; transition: transform .3s var(--ease), color .3s ease;
+}
+.ff input::placeholder, .ff textarea::placeholder { color: transparent; }
+.ff input:focus, .ff textarea:focus { outline: none; background: var(--paper); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(200, 165, 80, .18); }
+.ff input:focus + label, .ff input:not(:placeholder-shown) + label,
+.ff textarea:focus + label, .ff textarea:not(:placeholder-shown) + label { transform: translateY(-12px) scale(.7); color: var(--gold); }
+.ff.bad input { border-color: #a5441f; box-shadow: 0 0 0 4px rgba(165, 68, 31, .12); animation: shake .4s ease; }
+
+.guests {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: #fffdf8; border: 1px solid var(--rule); border-radius: 16px; padding: 12px 12px 12px 17px; text-align: left;
+}
+.guests[hidden] { display: none; }
+.guests .cap { font-style: italic; font-size: 1.2rem; line-height: 1.2; }
+.dots { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; min-height: 9px; max-width: 11rem; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-light), var(--gold)); }
+.dots i.new { animation: pop .45s cubic-bezier(.3, 1.7, .5, 1); }
+.stepper { display: inline-flex; align-items: center; gap: 6px; flex: none; }
+.stepper button {
+  width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold); background: var(--paper);
+  color: var(--olive); font: 400 1.35rem/1 var(--font-caps); cursor: pointer;
+  transition: background .3s ease, transform .2s ease, color .3s ease;
+}
+.stepper button:hover { background: var(--olive); color: var(--cream); }
+.stepper button:active { transform: scale(.9); }
+.stepper output { font-family: var(--font-caps); font-size: 1.8rem; min-width: 1.6em; text-align: center; }
+.stepper output.tick { animation: tick .4s var(--ease); }
+
+.send { display: grid; gap: 10px; }
+.summary { font-style: italic; font-weight: 500; font-size: 1.25rem; line-height: 1.25; min-height: 1.25em; }
+.error { color: #8a2b12; font-style: italic; font-size: 1.05rem; }
+.error:empty { display: none; }
+.hint { font-size: 1rem; font-style: italic; color: var(--olive-soft); }
+
+.thanks { justify-items: center; padding: 6px 0 14px; }
+.thanks svg { width: 96px; height: 64px; overflow: visible; }
+.thanks svg path { fill: none; stroke: var(--gold); stroke-width: 1.4; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.2s var(--ease) .1s forwards; }
+.thanks svg path + path { animation-delay: .7s; animation-duration: .7s; }
+.thanks > * { animation: rise .9s var(--ease) both; }
+.thanks > :nth-child(2) { animation-delay: .15s; } .thanks > :nth-child(3) { animation-delay: .3s; } .thanks > :nth-child(4) { animation-delay: .45s; }
+.thanks p { max-width: 24rem; }
+.linkbtn { background: none; border: 0; padding: 8px; cursor: pointer; font: italic 500 1.1rem var(--font-script); color: var(--olive-soft); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--gold); }
+.linkbtn:hover { color: var(--olive); }
+@keyframes pop { from { transform: scale(0); } to { transform: none; } }
+@keyframes shake { 25% { transform: translateX(-5px); } 50% { transform: translateX(4px); } 75% { transform: translateX(-2px); } }
+
+footer.sign { display: grid; justify-items: center; gap: 10px; padding-top: 18px; }
+footer.sign img { height: 46px; width: auto; opacity: .9; }
+footer.sign .with { font-style: italic; font-size: 1.3rem; font-weight: 500; }
+footer.sign .names { font-family: var(--font-caps); font-size: .8rem; letter-spacing: .3em; text-transform: uppercase; }
+
+/* ---------- scroll reveals (only when JS is running) ---------- */
+.js .rv { opacity: 0; transform: translateY(26px); transition: opacity 1.1s var(--ease), transform 1.1s var(--ease); transition-delay: var(--d, 0ms); }
+.js .rv.in { opacity: 1; transform: none; }
+.js .thread path, .js .knot path { stroke-dashoffset: 1; transition: stroke-dashoffset 1.6s var(--ease); }
+.js .thread.in path, .js .knot.in path { stroke-dashoffset: 0; }
+.js .knot path + path { transition-delay: .5s; }
+
+/* ---------- opening: the thread is untied and the doors part ---------- */
+.veil { position: fixed; inset: 0; z-index: 50; pointer-events: none; animation: veilgone .01s linear 3.2s forwards; }
+.door { position: absolute; top: 0; bottom: 0; width: 50.2%; background: var(--cream); animation: 1.7s cubic-bezier(.75, 0, .2, 1) 1.35s forwards; }
+.door.l { left: 0; border-right: 1px solid var(--gold); background-image: radial-gradient(60% 50% at 100% 50%, rgba(226, 196, 110, .28), transparent); animation-name: doorL; }
+.door.r { right: 0; border-left: 1px solid var(--gold); background-image: radial-gradient(60% 50% at 0% 50%, rgba(226, 196, 110, .28), transparent); animation-name: doorR; }
+.seal { position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; justify-items: center; gap: 16px; animation: sealout .55s ease-in 1.1s forwards; }
+.seal svg { width: 120px; height: 80px; overflow: visible; }
+.seal path { fill: none; stroke: var(--gold); stroke-width: 1.3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .9s var(--ease) .1s forwards; }
+.seal path + path { animation-delay: .45s; animation-duration: .6s; }
+.seal span { font-family: var(--font-caps); font-size: .72rem; letter-spacing: .4em; margin-right: -.4em; text-transform: uppercase; color: var(--olive); white-space: nowrap; animation: fade .8s ease .3s both; }
+.arch { animation: cardin 1.8s var(--ease) 1.5s both; }
+.sweep { position: absolute; inset: 0; border-radius: 50cqw 50cqw 0 0; overflow: hidden; pointer-events: none; }
+.sweep::before { content: ""; position: absolute; top: -10%; bottom: -10%; left: 0; width: 45%; background: linear-gradient(100deg, transparent, rgba(240, 214, 140, .38), transparent); transform: translateX(-140%) skewX(-16deg); animation: sweep 1.7s ease-in-out 5.4s forwards; }
+.date .row span:first-child { animation: fromRight 1.1s var(--ease) 4.9s both; }
+.date .row span:last-child { animation: fromLeft 1.1s var(--ease) 4.9s both; }
+@keyframes veilgone { to { visibility: hidden; } }
+@keyframes doorL { to { transform: translateX(-101%); } }
+@keyframes doorR { to { transform: translateX(101%); } }
+@keyframes sealout { to { opacity: 0; scale: 1.5; filter: blur(6px); } }
+@keyframes cardin { from { opacity: 0; scale: .88; } to { opacity: 1; scale: 1; } }
+@keyframes unveil { from { opacity: 0; clip-path: circle(0% at 50% 62%); transform: scale(1.06); } 30% { opacity: 1; } to { opacity: 1; clip-path: circle(110% at 50% 62%); transform: none; } }
+@keyframes sweep { to { transform: translateX(360%) skewX(-16deg); } }
+@keyframes fromRight { from { opacity: 0; transform: translateX(5cqw); } to { opacity: 1; transform: none; } }
+@keyframes fromLeft { from { opacity: 0; transform: translateX(-5cqw); } to { opacity: 1; transform: none; } }
+
+/* ---------- extra motion ---------- */
+.arch { transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s var(--ease); will-change: transform; }
+.arch-ring { display: none; fill: none; stroke: url(#goldline); stroke-width: 2.6; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: .6; animation: draw 3s var(--ease) 2.6s forwards; }
+.arch-ring.outer { opacity: .32; animation-delay: 3.1s; }
+.family img { animation: float 7s ease-in-out 6.2s infinite alternate; }
+.cross-wrap img { animation: sway 6s ease-in-out 4.2s infinite alternate; transform-origin: 50% 0; }
+.date .day { animation: daypulse 3.6s ease-in-out 6.5s infinite; }
+.count .num.tick { animation: tick .55s var(--ease); }
+.lead .w { display: inline-block; }
+.js .lead .w { opacity: 0; transform: translateY(.45em) rotate(3deg); filter: blur(6px); transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease); transition-delay: calc(var(--w) * 130ms + 150ms); }
+.js .lead.in .w { opacity: 1; transform: none; filter: none; }
+.btn { position: relative; overflow: hidden; }
+.btn::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 244, 214, .55), transparent); transform: skewX(-20deg); animation: sheen 5.5s ease-in-out 3s infinite; pointer-events: none; }
+.eyebrow.orn { display: inline-flex; align-items: center; justify-content: center; justify-self: center; gap: 14px; }
+.eyebrow.orn::before, .eyebrow.orn::after { content: ""; width: 44px; height: 1px; background: var(--gold); transform: scaleX(0); transition: transform 1.2s var(--ease) .35s; }
+.eyebrow.orn::before { transform-origin: right; } .eyebrow.orn::after { transform-origin: left; }
+.eyebrow.orn.in::before, .eyebrow.orn.in::after, html:not(.js) .eyebrow.orn::before, html:not(.js) .eyebrow.orn::after { transform: scaleX(1); }
+.petal { position: fixed; top: 0; left: 0; width: 9px; height: 9px; border-radius: 60% 0 60% 0; background: linear-gradient(135deg, var(--gold-light), var(--gold)); pointer-events: none; z-index: 5; animation: petal 1.5s var(--ease) forwards; }
+
+/* ---------- keyframes ---------- */
+@keyframes float { from { transform: translateY(0); } to { transform: translateY(-1.4cqw); } }
+@keyframes sway { from { transform: rotate(-2.2deg); } to { transform: rotate(2.2deg); } }
+@keyframes gild { 0%, 12%, 100% { color: var(--olive); text-shadow: none; } 6% { color: #c9a548; text-shadow: 0 0 .5em rgba(220, 190, 100, .7); } }
+@keyframes daypulse { 0%, 100% { color: var(--olive); } 50% { color: #b08a2e; } }
+@keyframes tick { from { opacity: 0; transform: translateY(-.35em); filter: blur(3px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes sheen { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+@keyframes petal { from { opacity: 1; transform: translate(var(--x0), var(--y0)) rotate(0) scale(1); } to { opacity: 0; transform: translate(calc(var(--x0) + var(--dx)), calc(var(--y0) + var(--dy))) rotate(var(--rot)) scale(.4); } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(16px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes descend { 0% { opacity: 0; transform: translateY(-30px) scale(.7); filter: brightness(2.2) blur(4px); } 60% { opacity: 1; filter: brightness(1.5) blur(0); } 100% { opacity: 1; transform: none; filter: none; } }
+@keyframes letter { from { opacity: 0; transform: translateY(.5em); filter: blur(5px); } to { opacity: 1; transform: none; filter: none; } }
+@keyframes bloom { from { opacity: 0; transform: translateY(22px) scale(.965); } to { opacity: 1; transform: none; } }
+@keyframes glow { from { opacity: .3; transform: scale(.9); } to { opacity: .8; transform: scale(1.08); } }
+@keyframes cue { 0% { transform: scaleY(0); opacity: 1; } 60% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+
+/* ---------- wide screens: one centred column, card first ---------- */
+@media (min-width: 940px) {
+  .hero { min-height: 100vh; justify-content: center; padding: 36px 24px 20px; gap: 22px; }
+  .arch { width: min(100%, 540px, calc((100vh - 130px) * 0.5878)); }
+  .arch-ring { display: block; }
+  .story { padding: 72px 24px 96px; gap: 20px; }
+  .block { max-width: 46rem; gap: 22px; }
+  .lead { font-size: clamp(3rem, 5vw, 4.6rem); }
+  .body { font-size: 1.35rem; max-width: 34rem; }
+  .count .cell { padding-inline: 38px; }
+  .count .num { font-size: 4rem; }
+  .thread { height: 120px; }
+  .facts { grid-template-columns: 1fr 1px 1fr; gap: 0; align-items: stretch; }
+  .facts::before { content: ""; grid-column: 2; grid-row: 1; background: linear-gradient(transparent, var(--gold) 20%, var(--gold) 80%, transparent); }
+  .fact { padding: 8px 36px; }
+  .fact:first-child { grid-column: 1; grid-row: 1; }
+  .fact:last-child { grid-column: 3; grid-row: 1; }
+  .fact .big { font-size: 1.9rem; }
+  .rsvp { max-width: 38rem; border-radius: 170px 170px 14px 14px; padding: 78px 60px 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .arch-line { stroke-dashoffset: 0; }
+  .js .rv { opacity: 1; transform: none; }
+  .js .thread path, .js .knot path { stroke-dashoffset: 0; }
+  #dust, .veil { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="veil" aria-hidden="true">
+  <div class="door l"></div><div class="door r"></div>
+  <div class="seal">
+    <svg viewBox="0 0 84 56"><path pathLength="1" d="M42 22C22 2 4 10 10 22C14 32 32 30 42 22C52 14 70 12 74 22C80 34 62 42 42 22"/><path pathLength="1" d="M42 22C36 36 30 46 20 54M42 22C48 36 54 46 64 54"/></svg>
+    <span>You are invited</span>
+  </div>
+</div>
+<main class="layout">
+
+  <!-- The card -->
+  <section class="hero" aria-label="Invitation card">
+    <canvas id="dust" aria-hidden="true"></canvas>
+
+    <div class="arch">
+      <svg class="arch-shape" viewBox="0 0 730 1242" aria-hidden="true">
+        <defs>
+          <linearGradient id="goldline" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#a67c2c"/>
+            <stop offset=".5" stop-color="#b8963e"/>
+            <stop offset="1" stop-color="#dcc878"/>
+          </linearGradient>
+        </defs>
+        <path class="arch-ring" pathLength="1" transform="translate(365 660) scale(1.08) translate(-365 -660)" d="M2 1240V365A363 363 0 0 1 728 365V1240"/>
+        <path class="arch-ring outer" pathLength="1" transform="translate(365 700) scale(1.17) translate(-365 -700)" d="M2 1240V365A363 363 0 0 1 728 365V1240"/>
+        <path class="arch-fill" d="M2 1240V365A363 363 0 0 1 728 365V1240Z"/>
+        <path class="arch-line" pathLength="1" d="M2 1240V365A363 363 0 0 1 728 365V1240Z"/>
+      </svg>
+
+      <div class="arch-inner">
+        <div class="sweep"></div>
+        <div class="cross-wrap"><img src="assets/cross.webp" alt="Ornate golden cross" width="260" height="357"></div>
+        <p class="grace">With the grace of God</p>
+        <p class="invite">we, Bibin Little and Christamol Johns,<br>invite you to join our baby boy&rsquo;s</p>
+
+        <h1 class="title" aria-label="Noolukettu Ceremony">
+          <span class="word" aria-hidden="true">
+            <span style="--i:0">N</span><span style="--i:1">O</span><span style="--i:2">O</span><span style="--i:3">L</span><span style="--i:4">U</span><span style="--i:5">K</span><span style="--i:6">E</span><span style="--i:7">T</span><span style="--i:8">T</span><span style="--i:9">U</span>
+          </span>
+          <span class="word" aria-hidden="true">
+            <span style="--i:10">C</span><span style="--i:11">E</span><span style="--i:12">R</span><span style="--i:13">E</span><span style="--i:14">M</span><span style="--i:15">O</span><span style="--i:16">N</span><span style="--i:17">Y</span>
+          </span>
+        </h1>
+
+        <div class="family">
+          <img src="assets/family.webp" alt="Illustration of the family: father, mother holding the newborn, and big brother, all dressed in white" width="840" height="919">
+        </div>
+
+        <div class="date" aria-label="Saturday, 21 November 2026 at 3:30 pm">
+          <span class="month" aria-hidden="true">NOVEMBER</span>
+          <span class="row" aria-hidden="true"><span>SATURDAY</span><span class="day">21</span><span>AT 3:30pm</span></span>
+          <span class="year" aria-hidden="true">2026</span>
+        </div>
+        <p class="address">Little Flower House<br>Koliyoor, Muttacadu P.O<br>Thiruvallam, Thiruvananthapuram</p>
+      </div>
+    </div>
+
+    <a class="scroll-cue" href="#countdown">Scroll<i></i></a>
+  </section>
+
+  <!-- The story -->
+  <div class="story">
+
+    <section class="block" id="countdown">
+      <p class="eyebrow orn rv">21 November 2026</p>
+      <h2 class="lead rvw"><span class="w" style="--w:0">Come,</span> <span class="w" style="--w:1">bless</span><br><span class="w" style="--w:2">our</span> <span class="w" style="--w:3">little</span> <span class="w" style="--w:4">one.</span></h2>
+      <p class="body rv" style="--d:220ms">We are tying the thread for our baby boy, and we would love to have you beside us when we do.</p>
+      <div class="count rv" style="--d:320ms" id="count" role="timer" aria-label="Time left until the ceremony">
+        <div class="cell"><span class="num" id="cd-d">0</span><span class="lbl">Days</span></div>
+        <div class="cell"><span class="num" id="cd-h">0</span><span class="lbl">Hours</span></div>
+        <div class="cell"><span class="num" id="cd-m">0</span><span class="lbl">Mins</span></div>
+        <div class="cell"><span class="num" id="cd-s">0</span><span class="lbl">Secs</span></div>
+      </div>
+    </section>
+
+    <svg class="thread" viewBox="0 0 26 92" aria-hidden="true"><path pathLength="1" d="M13 0C22 14 4 26 13 40S22 68 13 92"/></svg>
+
+    <section class="block" id="details">
+      <p class="eyebrow orn rv">The ceremony</p>
+      <div class="facts">
+        <div class="fact rv" style="--d:100ms">
+          <h3>When</h3>
+          <p class="big">Saturday, 21 November 2026</p>
+          <p class="small">3:30 in the afternoon</p>
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Noolukettu%20Ceremony%20%E2%80%93%20Bibin%20%26%20Christamol%27s%20baby%20boy&amp;dates=20261121T100000Z%2F20261121T123000Z&amp;location=Little%20Flower%20House%2C%20Koliyoor%2C%20Muttacadu%20P.O%2C%20Thiruvallam%2C%20Thiruvananthapuram&amp;details=With%20the%20grace%20of%20God%2C%20join%20us%20for%20our%20baby%20boy%27s%20Noolukettu%20ceremony.">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M2 6.5h12M5 1.5v3M11 1.5v3"/></svg>
+            Add to calendar
+          </a>
+        </div>
+        <div class="fact rv" style="--d:220ms">
+          <h3>Where</h3>
+          <p class="big">Little Flower House</p>
+          <p class="small">Koliyoor, Muttacadu P.O<br>Thiruvallam, Thiruvananthapuram</p>
+          <a class="btn" target="_blank" rel="noopener"
+             href="https://www.google.com/maps/search/?api=1&amp;query=8.41825008392334%2C76.98590087890625">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.5s4.5-4.2 4.5-7.8a4.5 4.5 0 0 0-9 0c0 3.6 4.5 7.8 4.5 7.8Z"/><circle cx="8" cy="6.6" r="1.6"/></svg>
+            Get directions
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <svg class="thread" viewBox="0 0 26 92" aria-hidden="true"><path pathLength="1" d="M13 0C4 14 22 26 13 40S4 68 13 92"/></svg>
+
+    <form class="rsvp rv" id="rsvp" novalidate>
+      <div class="ask" id="rsvp-ask">
+        <div class="rsvp-head">
+          <p class="eyebrow orn rv">RSVP</p>
+          <h2 id="attend-label">Will you join us?</h2>
+          <p class="sub">Tap your answer to begin.</p>
+        </div>
+
+        <div class="choice" role="radiogroup" aria-labelledby="attend-label">
+          <div>
+            <input type="radio" name="attend" id="attend-yes" value="yes">
+            <label for="attend-yes">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27S4.5 20 4.5 11.800A6.3 6.3 0 0 1 16 8.200a6.3 6.3 0 0 1 11.5 3.600C27.5 20 16 27 16 27Z"/></svg>
+              <span class="t">Joyfully attending</span>
+              <span class="s">We will be there</span>
+            </label>
+          </div>
+          <div>
+            <input type="radio" name="attend" id="attend-no" value="no">
+            <label for="attend-no">
+              <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="7.5" width="24" height="17" rx="2"/><path d="M4.5 9l11.5 9 11.5-9"/></svg>
+              <span class="t">Blessings from afar</span>
+              <span class="s">Can&rsquo;t make it</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="more" id="rsvp-more">
+          <div class="more-in" id="rsvp-more-in">
+            <div class="ff" id="name-field">
+              <input type="text" id="rsvp-name" name="name" autocomplete="name" placeholder=" ">
+              <label for="rsvp-name">Your name</label>
+            </div>
+
+            <div class="guests" id="guests-field" role="group" aria-labelledby="guests-label">
+              <div>
+                <div class="cap" id="guests-label">How many of you?</div>
+                <div class="dots" id="guests-dots" aria-hidden="true"></div>
+              </div>
+              <div class="stepper">
+                <button type="button" id="guests-minus" aria-label="One fewer guest">&minus;</button>
+                <output id="guests-count" aria-live="polite">2</output>
+                <button type="button" id="guests-plus" aria-label="One more guest">+</button>
+              </div>
+            </div>
+
+            <div class="ff">
+              <textarea id="rsvp-note" name="note" rows="2" placeholder=" "></textarea>
+              <label for="rsvp-note" id="note-label">A note for the family (optional)</label>
+            </div>
+
+            <div class="send">
+              <p class="summary" id="rsvp-summary" aria-live="polite"></p>
+              <a class="btn solid" id="rsvp-send" target="_blank" rel="noopener" href="https://wa.me/">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 13.500l.9-2.700A5.5 5.5 0 1 1 5.2 12.600Z"/></svg>
+                <span id="rsvp-send-label">Send reply on WhatsApp</span>
+              </a>
+              <p class="error" id="rsvp-error" role="alert"></p>
+              <p class="hint" id="rsvp-hint">WhatsApp opens with your reply written out. Press send there to finish.</p>
+              <a class="linkbtn" id="rsvp-wa" target="_blank" rel="noopener" href="https://wa.me/" hidden>Send it on WhatsApp instead</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="thanks" id="rsvp-thanks" hidden>
+        <svg viewBox="0 0 84 56" aria-hidden="true"><path pathLength="1" d="M42 22C22 2 4 10 10 22C14 32 32 30 42 22C52 14 70 12 74 22C80 34 62 42 42 22"/><path pathLength="1" d="M42 22C36 36 30 46 20 54M42 22C48 36 54 46 64 54"/></svg>
+        <h2 id="thanks-title">Thank you.</h2>
+        <p class="sub" id="thanks-text">Your reply is ready in WhatsApp. Press send there so it reaches us.</p>
+        <button type="button" class="linkbtn" id="rsvp-edit">Change my reply</button>
+      </div>
+    </form>
+
+    <svg class="knot" viewBox="0 0 84 56" aria-hidden="true">
+      <path pathLength="1" d="M42 0V22C22 2 4 10 10 22C14 32 32 30 42 22C52 14 70 12 74 22C80 34 62 42 42 22"/>
+      <path pathLength="1" d="M42 22C36 36 30 46 20 54M42 22C48 36 54 46 64 54"/>
+    </svg>
+
+    <footer class="sign rv">
+      <img src="assets/cross.webp" alt="" width="260" height="357">
+      <p class="with">With love and gratitude,</p>
+      <p class="names">Bibin, Christamol &amp; family</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---- settings ---- */
+  var EVENT_START = new Date('2026-11-21T15:30:00+05:30');
+  // Host's WhatsApp number with country code, digits only, e.g. "919876543210".
+  // Left empty, WhatsApp asks the guest to pick who to send the reply to.
+  var HOST_WHATSAPP = '917012325250';
+  // Google Sheet: paste the Apps Script web app URL here (it ends in /exec).
+  // Left empty, replies go by WhatsApp only.
+  var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbwPULc65NmJyCzEwy_qwF_WG0Jar_2iddTPogvWQIPU3moXgqJWchxRm9OhScClizk3ZA/exec';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---- countdown ---- */
+  var cd = { d: $('cd-d'), h: $('cd-h'), m: $('cd-m'), s: $('cd-s') };
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function put(el, v) {
+    if (el.textContent === v) return;
+    el.textContent = v;
+    if (reduceMotion) return;
+    el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
+  }
+  function tick() {
+    var left = EVENT_START - Date.now();
+    if (left <= 0) {
+      var box = $('count');
+      box.outerHTML = '<p class="body" style="font-style:italic;font-size:1.5rem">' +
+        (left > -6 * 3600e3 ? 'The ceremony is today. See you there!' : 'Thank you for your prayers and blessings.') + '</p>';
+      clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(left / 1000);
+    put(cd.d, '' + Math.floor(s / 86400));
+    put(cd.h, pad(Math.floor(s % 86400 / 3600)));
+    put(cd.m, pad(Math.floor(s % 3600 / 60)));
+    put(cd.s, pad(s % 60));
+  }
+  var timer = setInterval(tick, 1000);
+  tick();
+
+  /* ---- scroll reveals and thread drawing ---- */
+  var targets = document.querySelectorAll('.rv, .rvw, .thread, .knot');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+    targets.forEach(function (t) { io.observe(t); });
+  } else {
+    targets.forEach(function (t) { t.classList.add('in'); });
+  }
+
+  /* ---- RSVP ---- */
+  var nameEl = $('rsvp-name'), noteEl = $('rsvp-note'), sendEl = $('rsvp-send');
+  var errEl = $('rsvp-error'), sumEl = $('rsvp-summary'), nameField = $('name-field');
+  var yesEl = $('attend-yes'), noEl = $('attend-no');
+  var more = $('rsvp-more'), moreIn = $('rsvp-more-in');
+  var guestsField = $('guests-field'), guestsOut = $('guests-count'), dotsEl = $('guests-dots');
+  var askEl = $('rsvp-ask'), thanksEl = $('rsvp-thanks');
+  var guests = 2, shownDots = 0, busy = false;
+  var hintEl = $('rsvp-hint'), waEl = $('rsvp-wa'), sendLabel = $('rsvp-send-label');
+  if (SHEET_ENDPOINT) {
+    sendLabel.textContent = 'Send my reply';
+    hintEl.textContent = 'Your reply goes straight to the family.';
+    sendEl.removeAttribute('target');
+    sendEl.setAttribute('role', 'button');
+  }
+
+  function answer() { return yesEl.checked ? 'yes' : noEl.checked ? 'no' : null; }
+  function drawDots() {
+    if (shownDots === guests) return;
+    var html = '';
+    for (var i = 0; i < guests; i++) html += '<i' + (i >= shownDots ? ' class="new"' : '') + '></i>';
+    dotsEl.innerHTML = html;
+    shownDots = guests;
+  }
+  function sync() {
+    var a = answer(), name = nameEl.value.trim(), note = noteEl.value.trim();
+    more.classList.toggle('open', !!a);
+    moreIn.inert = !a;
+    guestsField.hidden = a !== 'yes';
+    $('note-label').textContent = a === 'no' ? 'A wish for the little one (optional)' : 'A note for the family (optional)';
+    guestsOut.textContent = guests;
+    drawDots();
+
+    if (a === 'yes') {
+      sumEl.textContent = name
+        ? name + (guests > 1 ? ' + ' + (guests - 1) : '') + ' will be there'
+        : guests + (guests === 1 ? ' person' : ' people') + ' joyfully attending';
+    } else if (a === 'no') {
+      sumEl.textContent = name ? name + ' sends blessings from afar' : 'Sending blessings from afar';
+    } else { sumEl.textContent = ''; }
+
+    var lines = ['Noolukettu Ceremony, 21 Nov 2026', 'From: ' + (name || '(name)')];
+    lines.push(a === 'no'
+      ? 'Reply: Not able to come, sending our blessings'
+      : 'Reply: Joyfully attending, ' + guests + (guests === 1 ? ' person' : ' people'));
+    if (note) lines.push('Note: ' + note);
+    waEl.href = sendEl.href = 'https://wa.me/' + HOST_WHATSAPP + '?text=' + encodeURIComponent(lines.join('\n'));
+  }
+  function step(by) {
+    guests = Math.max(1, Math.min(15, guests + by));
+    sync();
+    if (!reduceMotion) { guestsOut.classList.remove('tick'); void guestsOut.offsetWidth; guestsOut.classList.add('tick'); }
+  }
+  $('guests-minus').addEventListener('click', function () { step(-1); });
+  $('guests-plus').addEventListener('click', function () { step(1); });
+  $('rsvp').addEventListener('input', function () { errEl.textContent = ''; nameField.classList.remove('bad'); sync(); });
+  $('rsvp').addEventListener('submit', function (e) { e.preventDefault(); });
+  sendEl.addEventListener('click', function (e) {
+    var name = nameEl.value.trim();
+    if (!name) {
+      e.preventDefault();
+      errEl.textContent = 'Please add your name so we know who is replying.';
+      nameField.classList.remove('bad'); void nameField.offsetWidth; nameField.classList.add('bad');
+      nameEl.focus();
+      return;
+    }
+    if (!SHEET_ENDPOINT) {            // WhatsApp only: the link opens, then we say what to do next
+      setTimeout(function () { showThanks(name, false); }, 500);
+      return;
+    }
+    e.preventDefault();               // save to the Google Sheet
+    if (busy) return;
+    busy = true; errEl.textContent = '';
+    sendLabel.textContent = 'Sending\u2026'; sendEl.setAttribute('aria-busy', 'true');
+    fetch(SHEET_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },   // keeps it a simple request, no preflight
+      body: JSON.stringify({
+        name: name, attending: answer(), guests: answer() === 'yes' ? guests : 0,
+        note: noteEl.value.trim(), page: location.href
+      })
+    }).then(function (r) { return r.json(); }).then(function (j) {
+      if (!j || !j.ok) throw new Error('not saved');
+      showThanks(name, true);
+    }).catch(function () {
+      errEl.textContent = 'We could not save your reply just now. Please try again, or send it on WhatsApp.';
+      waEl.hidden = false;
+    }).then(function () {
+      busy = false; sendLabel.textContent = 'Send my reply'; sendEl.removeAttribute('aria-busy');
+    });
+  });
+  function showThanks(name, saved) {
+    var no = answer() === 'no';
+    $('thanks-title').textContent = 'Thank you, ' + name.split(/\s+/)[0] + '.';
+    $('thanks-text').textContent = saved
+      ? (no ? 'Your blessings have reached us.' : 'Your reply has reached us. We cannot wait to see you.')
+      : (no ? 'Your blessings are written out in WhatsApp. Press send there so they reach us.'
+            : 'Your reply is ready in WhatsApp. Press send there so it reaches us. We cannot wait to see you.');
+    askEl.hidden = true; thanksEl.hidden = false;
+  }
+  $('rsvp-edit').addEventListener('click', function () { thanksEl.hidden = true; askEl.hidden = false; nameEl.focus(); });
+  sync();
+
+  /* ---- the card leans gently toward the pointer ---- */
+  var hero = document.querySelector('.hero'), arch = document.querySelector('.arch');
+  if (!reduceMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    hero.addEventListener('pointermove', function (e) {
+      var r = arch.getBoundingClientRect();
+      var px = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+      var py = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+      px = Math.max(-1.5, Math.min(1.5, px)); py = Math.max(-1.2, Math.min(1.2, py));
+      arch.style.setProperty('--ry', (px * 3.2).toFixed(2) + 'deg');
+      arch.style.setProperty('--rx', (-py * 2.4).toFixed(2) + 'deg');
+    });
+    hero.addEventListener('pointerleave', function () {
+      arch.style.setProperty('--ry', '0deg'); arch.style.setProperty('--rx', '0deg');
+    });
+  }
+
+  /* ---- a few gold petals when a guest says yes ---- */
+  function petals(el) {
+    if (reduceMotion) return;
+    var r = el.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    for (var i = 0; i < 16; i++) {
+      var p = document.createElement('i'), ang = Math.random() * 6.283, dist = 50 + Math.random() * 90;
+      p.className = 'petal';
+      p.style.setProperty('--x0', cx + 'px'); p.style.setProperty('--y0', cy + 'px');
+      p.style.setProperty('--dx', Math.cos(ang) * dist + 'px');
+      p.style.setProperty('--dy', (Math.sin(ang) * dist - 30) + 'px');
+      p.style.setProperty('--rot', (Math.random() * 540 - 270) + 'deg');
+      p.style.animationDelay = (Math.random() * 120) + 'ms';
+      document.body.appendChild(p);
+      p.addEventListener('animationend', function () { this.remove(); });
+    }
+  }
+  $('attend-yes').addEventListener('change', function () { petals(document.querySelector('label[for="attend-yes"]')); });
+
+  /* ---- gold dust behind the card ---- */
+  var canvas = $('dust');
+  if (canvas && canvas.getContext && !reduceMotion) {
+    var ctx = canvas.getContext('2d'), W = 0, H = 0, dpr = 1, motes = [], running = true, last = 0;
+    function resize() {
+      var r = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = r.width; H = r.height;
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function spawn(anywhere) {
+      return {
+        x: Math.random() * W,
+        y: anywhere ? Math.random() * H : H + 10,
+        r: 0.9 + Math.random() * 2.7,
+        vy: 6 + Math.random() * 14,
+        sway: 6 + Math.random() * 16,
+        phase: Math.random() * 6.283,
+        tw: 0.6 + Math.random() * 1.4,
+        a: 0.38 + Math.random() * 0.5
+      };
+    }
+    function frame(t) {
+      if (!running) return;
+      var dt = Math.min((t - last) / 1000 || 0, 0.05); last = t;
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < motes.length; i++) {
+        var m = motes[i];
+        m.y -= m.vy * dt; m.phase += dt * m.tw;
+        if (m.y < -10) motes[i] = m = spawn(false);
+        var x = m.x + Math.sin(m.phase) * m.sway;
+        var alpha = m.a * (0.55 + 0.45 * Math.sin(m.phase * 1.7));
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(196, 152, 48,' + alpha.toFixed(3) + ')';
+        ctx.shadowColor = 'rgba(226, 186, 90, .9)';
+        ctx.shadowBlur = m.r * 5;
+        ctx.arc(x, m.y, m.r, 0, 6.283);
+        ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    resize();
+    for (var k = 0; k < (window.innerWidth > 940 ? 85 : 40); k++) motes.push(spawn(true));
+    window.addEventListener('resize', resize);
+    document.addEventListener('visibilitychange', function () {
+      running = !document.hidden;
+      if (running) { last = performance.now(); requestAnimationFrame(frame); }
+    });
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+</body>
+</html>
