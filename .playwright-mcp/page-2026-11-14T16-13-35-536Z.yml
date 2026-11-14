@@ -1,0 +1,114 @@
+- generic [active] [ref=e1]:
+  - generic [aria-hidden]:
+    - generic: You are invited
+  - main [ref=e2]:
+    - region "Invitation card" [ref=e3]:
+      - generic [ref=e10]:
+        - img "Ornate golden cross" [ref=e12]
+        - paragraph [ref=e13]: With the grace of God
+        - paragraph [ref=e14]: you are invitedto join Luke’s
+        - heading "Noolukettu Ceremony" [level=1] [ref=e15]:
+          - generic [aria-hidden] [ref=e16]:
+            - generic [ref=e17]: "N"
+            - generic [ref=e18]: O
+            - generic [ref=e19]: O
+            - generic [ref=e20]: L
+            - generic [ref=e21]: U
+            - generic [ref=e22]: K
+            - generic [ref=e23]: E
+            - generic [ref=e24]: T
+            - generic [ref=e25]: T
+            - generic [ref=e26]: U
+          - generic [aria-hidden] [ref=e27]:
+            - generic [ref=e28]: C
+            - generic [ref=e29]: E
+            - generic [ref=e30]: R
+            - generic [ref=e31]: E
+            - generic [ref=e32]: M
+            - generic [ref=e33]: O
+            - generic [ref=e34]: "N"
+            - generic [ref=e35]: "Y"
+        - 'img "Illustration of the family: father, mother holding the newborn, and big brother, all dressed in white" [ref=e37]'
+        - generic "Sunday, 22 November 2026 at 5:00 pm" [ref=e38]:
+          - generic [aria-hidden] [ref=e39]: NOVEMBER
+          - generic [aria-hidden] [ref=e40]:
+            - generic [ref=e41]: SUNDAY
+            - generic [ref=e42]: "22"
+            - generic [ref=e43]: AT 5:00pm
+          - generic [aria-hidden] [ref=e44]: "2026"
+        - paragraph [ref=e45]: Little Flower HouseKoliyoor, Muttacadu P.OThiruvallam, Thiruvananthapuram
+      - link "Scroll" [ref=e46] [cursor=pointer]:
+        - /url: "#countdown"
+    - generic [ref=e47]:
+      - generic [ref=e48]:
+        - paragraph [ref=e49]: 22 November 2026
+        - heading "Come, bless our little one." [level=2] [ref=e50]:
+          - generic [ref=e51]: Come,
+          - generic [ref=e52]: bless
+          - generic [ref=e53]: our
+          - generic [ref=e54]: little
+          - generic [ref=e55]: one.
+        - paragraph [ref=e56]: We are tying the thread for Luke, and we would love to have you beside us when we do.
+        - timer "Time left until the ceremony" [ref=e57]:
+          - generic [ref=e58]:
+            - generic [ref=e59]: "7"
+            - generic [ref=e60]: Days
+          - generic [ref=e61]:
+            - generic [ref=e62]: "19"
+            - generic [ref=e63]: Hours
+          - generic [ref=e64]:
+            - generic [ref=e65]: "16"
+            - generic [ref=e66]: Mins
+          - generic [ref=e67]:
+            - generic [ref=e68]: "24"
+            - generic [ref=e69]: Secs
+      - generic [ref=e72]:
+        - paragraph [ref=e73]: The ceremony
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - heading "When" [level=3] [ref=e76]
+            - paragraph [ref=e77]: Sunday, 22 November 2026
+            - paragraph [ref=e78]: 5:00 in the evening
+            - link "Add to calendar" [ref=e79] [cursor=pointer]:
+              - /url: https://calendar.google.com/calendar/render?action=TEMPLATE&text=Luke%27s%20Noolukettu%20Ceremony&dates=20261122T113000Z%2F20261122T140000Z&location=Little%20Flower%20House%2C%20Koliyoor%2C%20Muttacadu%20P.O%2C%20Thiruvallam%2C%20Thiruvananthapuram&details=With%20the%20grace%20of%20God%2C%20join%20us%20for%20Luke%27s%20Noolukettu%20ceremony.
+          - generic [ref=e83]:
+            - heading "Where" [level=3] [ref=e84]
+            - paragraph [ref=e85]: Little Flower House
+            - paragraph [ref=e86]: Koliyoor, Muttacadu P.OThiruvallam, Thiruvananthapuram
+            - link "Get directions" [ref=e87] [cursor=pointer]:
+              - /url: https://www.google.com/maps/search/?api=1&query=8.41825008392334%2C76.98590087890625
+      - generic [ref=e94]:
+        - generic [ref=e95]:
+          - paragraph [ref=e96]: RSVP
+          - heading "Will you join us?" [level=2] [ref=e97]
+          - paragraph [ref=e98]: Tap your answer to begin.
+        - radiogroup "Will you join us?" [ref=e99]:
+          - generic [ref=e100]:
+            - radio "Joyfully attending We will be there ✓"
+            - generic [ref=e101] [cursor=pointer]:
+              - generic [ref=e104]: Joyfully attending
+              - generic [ref=e105]: We will be there
+              - text: ✓
+          - generic [ref=e106]:
+            - radio "Blessings from afar Can’t make it ✓"
+            - generic [ref=e107] [cursor=pointer]:
+              - generic [ref=e111]: Blessings from afar
+              - generic [ref=e112]: Can’t make it
+              - text: ✓
+        - generic:
+          - generic:
+            - generic [ref=e113]:
+              - textbox "Your name" [ref=e114]:
+                - /placeholder: " "
+              - generic: Your name
+            - generic [ref=e115]:
+              - textbox "A note for Luke (optional)" [ref=e116]:
+                - /placeholder: " "
+              - generic: A note for Luke (optional)
+            - generic [ref=e117]:
+              - paragraph [ref=e118]
+              - button "Send my reply" [ref=e119] [cursor=pointer]
+              - paragraph [ref=e123]: Your reply goes straight to Luke.
+      - generic [ref=e127]:
+        - paragraph [ref=e128]: With love and gratitude,
+        - paragraph [ref=e129]: Luke
